@@ -1,102 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Quiz</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 
-<body>
-    <div class="container" align="center">
-        <h1>Quiz</h1>
-        <form id="quiz-form" align="justify">
-            <div class="question">
-                <p>1. What is the capital city of Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Ahmedabad<br>
-                <input type="radio" name="q1" value="b" class="correct">b) Gandhinagar<br>
-                <input type="radio" name="q1" value="c">c) Surat<br>
-                <input type="radio" name="q1" value="d">d) Rajkot<br>
-            </div>
-            <!-- Answer: b) Gandhinagar -->
-            <div class="question">
-                <p>2. What is the official language of Gujarat?</p>
-                <input type="radio" name="q2" value="a">a) Hindi<br>
-                <input type="radio" name="q2" value="b" class="correct">b) Gujarati<br>
-                <input type="radio" name="q2" value="c">c) English<br>
-                <input type="radio" name="q2" value="d">d) Marathi<br>
-            </div>
-            <!-- Answer: b) Gujarati -->
-            <div class="question">
-                <p>3. Which river flows through the city of Ahmedabad?</p>
-                <input type="radio" name="q3" value="a" class="correct">a) Sabarmati<br>
-                <input type="radio" name="q3" value="b">b) Narmada<br>
-                <input type="radio" name="q3" value="c">c) Tapti<br>
-                <input type="radio" name="q3" value="d">d) Mahi<br>
-            </div>
-            <!-- Answer: a) Sabarmati -->
-            <div class="question">
-                <p>4. What is the famous kite festival celebrated in Gujarat?</p>
-                <input type="radio" name="q4" value="a">a) Holi<br>
-                <input type="radio" name="q4" value="b">b) Navratri<br>
-                <input type="radio" name="q4" value="c">c) Diwali<br>
-                <input type="radio" name="q4" value="d" class="correct">d) Uttarayan<br>
-            </div>
-            <!-- Answer: d) Uttarayan -->
-            <div class="question">
-                <p>5. What is the chemical symbol for gold?</p>
-                <input type="radio" name="q5" value="a">a) Vadodara<br>
-                <input type="radio" name="q5" value="b">b) Jamnagar<br>
-                <input type="radio" name="q5" value="c" class="correct">c) Udaipur<br>
-                <input type="radio" name="q5" value="d">d) Bhavnagar<br>
-            </div>
-            <!-- Answer: c) Udaipur -->
-            <div class="question">
-                <p>6. Who is the current Chief Minister of Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Narendra Modi<br>
-                <input type="radio" name="q1" value="b">b) Amit Shah<br>
-                <input type="radio" name="q1" value="c" class="correct">c) Vijay Rupani<br>
-                <input type="radio" name="q1" value="d">d) Anandiben Patel<br>
-            </div>
-            <!-- Answer: c) Vijay Rupani -->
-            <div class="question">
-                <p>7. What is the name of the famous hill station located in Gujarat?</p>
-                <input type="radio" name="q1" value="a" class="correct">a) Mount Abu<br>
-                <input type="radio" name="q1" value="b">b) Kodaikanal<br>
-                <input type="radio" name="q1" value="c">c) Darjeeling<br>
-                <input type="radio" name="q1" value="d">d) Lonavala<br>
-            </div>
-            <!-- Answer: a) Mount Abu -->
-            <div class="question">
-                <p>8. Which is the largest city in Gujarat by population?</p>
-                <input type="radio" name="q1" value="a">a) Ahmedabad<br>
-                <input type="radio" name="q1" value="b" class="correct">b) Surat<br>
-                <input type="radio" name="q1" value="c">c) Vadodara<br>
-                <input type="radio" name="q1" value="d">d) Rajkot<br>
-            </div>
-            <!-- Answer: b) Surat -->
-            <div class="question">
-                <p>9.What is the name of the famous beach located in Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Marine Drive<br>
-                <input type="radio" name="q1" value="b">b) Juhu Beach<br>
-                <input type="radio" name="q1" value="c" class="correct">c) Dumas Beach<br>
-                <input type="radio" name="q1" value="d">d) Baga Beach<br>
-            </div>
-            <!-- Answer: c) Dumas Beach -->
-            <div class="question">
-                <p>10.Which of the following is not a UNESCO World Heritage Site in Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Rani ki Vav<br>
-                <input type="radio" name="q1" value="b">b) Champaner-Pavagadh Archaeological Park<br>
-                <input type="radio" name="q1" value="c" class="correct">c) Dwarka<br>
-                <input type="radio" name="q1" value="d">d) Somnath Temple<br>
+<style>
+    .dropbtn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30%;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #910909;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: #873e8e;}
 
-            </div>
-            <!-- Answer: c) Dwarka -->
+    body{
+        background-image: url(images/photon.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+    }
+
+  
+    </style>
+
+<body >
+    <div id="back">
+    <form action="" align="center">
+        <div>
             <div>
-                <input type="submit">
-                <input type="reset">
+                First Name:<input type="text" placeholder="First Name"> <br>
+                Last Name:<input type="text" placeholder="Last Name">
             </div>
-        </form>
-    </div>
+            
+        </div>
+        <div>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                      <a href="gujQ.html">Link 1</a>
+                      <a href="generalK.html">Link 2</a>
+                      <a href="#">Link 3</a>
+                    </div>
+                  </div>
+            </div>
+    </form>
+</div>
 </body>
 
 </html>
