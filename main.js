@@ -34,7 +34,7 @@ const option3 = document.querySelector('#op3');
 const option4 = document.querySelector('#op4');
 const submit = document.querySelector('#submit');
 
-// const answers = document.querySelectorAll('.answer');
+// const answers = document.querySelectorAll('.correct');
 
 let questionNum = 0;
 let score = 0;
@@ -48,6 +48,9 @@ const loadQuestion = () => {
     option2.innerText = questionList.b;
     option3.innerText = questionList.c;
     option4.innerText = questionList.d;
+    if(questionNum<quizzQ.length){
+        questionNum++;
+    }
     
 }
 
@@ -66,17 +69,18 @@ const getcheckAns = () => {
 submit.addEventListener('click', () => {
     // const checkAns = getcheckAns();
     // console.log(checkAns);
-
+  
     // if(checkAns == quizDB[questionNum].ans){
-        // score++;
+    //     score++;
     // };
 
-        questionNum++;
+        // questionNum++;
      
-    if(questionNum < quizzQ.length){
+    // if(questionNum < quizzQ.length){
      
          loadQuestion(questionNum);
+         
     
-       }
+    //    }
 
 })
