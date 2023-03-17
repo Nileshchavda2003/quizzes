@@ -1,137 +1,362 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Quiz</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javascript Quiz</title>
+<!-- <link rel="stylesheet" href="main.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+<style>
+    .content {
+    margin-top: 54px;
+    }
+    .header {
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: indianred;
+    }
+    .left-title {
+    width: 80px;
+    color: #fff;
+    font-size: 18px;
+    float: left;
+    }
+    .right-title {
+    width: 150px;
+    text-align: right;
+    float: right;
+    color: #fff;
+    }
+    .quiz-body {
+    margin-top: 15px;
+    padding-bottom: 50px;
+    }
+    .option-block-container {
+    margin-top: 20px;
+    max-width: 420px;
+    }
+    .option-block {
+    padding: 10px;
+    background: aliceblue;
+    border: 1px solid #84c5fe;
+    margin-bottom: 10px;
+    cursor: pointer;
+    }
+    .result-question {
+    font-weight: bold;
+    }
+    .c-wrong {
+    margin-left: 20px;
+    /* background-color: #ff0000; */
+    color: #ff0000;
+    }
+    .c-correct {
+    margin-left: 20px;
+    /* background-color: green; */
+    color: green;
+    }
+    .last-row {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    }
+    .res-header {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    }
+</style>
 </head>
-<link rel="stylesheet" type="text/css" href="main.css">
-
 <body>
-    <div class="container" align="center">
-        <h1>Quiz</h1>
-        <form id="quiz-form" align="justify">
+<header class="header">
+<div class="left-title">Gujarat </div>
+<div class="right-title">Total Questions: <span id="tque"></span></div>
+<div class="clearfix"></div>
+</header>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<div id="result" class="quiz-body">
+<form name="quizForm" onSubmit="" >
+<fieldset class="form-group" >
+<h4><span id="qid">1.</span> <span id="question"></span></h4>
+<div class="option-block-container" id="question-options" >
+</div> <!-- End of option block -->
+</fieldset>
+<button name="previous" id="previous" class="btn btn-success">Previous</button>
+&nbsp;
+<button name="next" id="next" class="btn btn-success">Next</button>
+</form>
+</div>
+</div> <!-- End of col-sm-12 -->
+</div> <!-- End of row -->
+</div> <!-- ENd of container fluid -->
+</div> <!-- End of content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<!-- <script src="main.js"></script> -->
 
-            <h2>javascript</h2>
-
-            <h2>javascript</h2>
-            <div >
-                <p id="question">dummy</p>
-                <input type="radio" name="q1"  value="a"><span id="op1"></span><br>
-                <input type="radio" name="q1"  value="b" class="correct"><span id="op2"></span><br>
-                <input type="radio" name="q1"  value="c"><span id="op3"></span><br>
-                <input type="radio" name="q1"  value="d"><span id="op4"></span><br>
-                <input type="submit" id="submit">
-            </div>
-
-            <h2>javascript</h2>
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="question">
-                <p>1. What is the capital city of Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Ahmedabad<br>
-                <input type="radio" name="q1" value="b" class="correct">b) Gandhinagar<br>
-                <input type="radio" name="q1" value="c">c) Surat<br>
-                <input type="radio" name="q1" value="d">d) Rajkot<br>
-            </div>
-            <!-- Answer: b) Gandhinagar -->
-            <div class="question">
-                <p>2. What is the official language of Gujarat?</p>
-                <input type="radio" name="q2" value="a">a) Hindi<br>
-                <input type="radio" name="q2" value="b" class="correct">b) Gujarati<br>
-                <input type="radio" name="q2" value="c">c) English<br>
-                <input type="radio" name="q2" value="d">d) Marathi<br>
-            </div>
-            <!-- Answer: b) Gujarati -->
-            <div class="question">
-                <p>3. Which river flows through the city of Ahmedabad?</p>
-                <input type="radio" name="q3" value="a" class="correct">a) Sabarmati<br>
-                <input type="radio" name="q3" value="b">b) Narmada<br>
-                <input type="radio" name="q3" value="c">c) Tapti<br>
-                <input type="radio" name="q3" value="d">d) Mahi<br>
-            </div>
-            <!-- Answer: a) Sabarmati -->
-            <div class="question">
-                <p>4. What is the famous kite festival celebrated in Gujarat?</p>
-                <input type="radio" name="q4" value="a">a) Holi<br>
-                <input type="radio" name="q4" value="b">b) Navratri<br>
-                <input type="radio" name="q4" value="c">c) Diwali<br>
-                <input type="radio" name="q4" value="d" class="correct">d) Uttarayan<br>
-            </div>
-            <!-- Answer: d) Uttarayan -->
-            <div class="question">
-                <p>5. What is the chemical symbol for gold?</p>
-                <input type="radio" name="q5" value="a">a) Vadodara<br>
-                <input type="radio" name="q5" value="b">b) Jamnagar<br>
-                <input type="radio" name="q5" value="c" class="correct">c) Udaipur<br>
-                <input type="radio" name="q5" value="d">d) Bhavnagar<br>
-            </div>
-            <!-- Answer: c) Udaipur -->
-            <div class="question">
-                <p>6. Who is the current Chief Minister of Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Narendra Modi<br>
-                <input type="radio" name="q1" value="b">b) Amit Shah<br>
-                <input type="radio" name="q1" value="c" class="correct">c) Vijay Rupani<br>
-                <input type="radio" name="q1" value="d">d) Anandiben Patel<br>
-            </div>
-            <!-- Answer: c) Vijay Rupani -->
-            <div class="question">
-                <p>7. What is the name of the famous hill station located in Gujarat?</p>
-                <input type="radio" name="q1" value="a" class="correct">a) Mount Abu<br>
-                <input type="radio" name="q1" value="b">b) Kodaikanal<br>
-                <input type="radio" name="q1" value="c">c) Darjeeling<br>
-                <input type="radio" name="q1" value="d">d) Lonavala<br>
-            </div>
-            <!-- Answer: a) Mount Abu -->
-            <div class="question">
-                <p>8. Which is the largest city in Gujarat by population?</p>
-                <input type="radio" name="q1" value="a">a) Ahmedabad<br>
-                <input type="radio" name="q1" value="b" class="correct">b) Surat<br>
-                <input type="radio" name="q1" value="c">c) Vadodara<br>
-                <input type="radio" name="q1" value="d">d) Rajkot<br>
-            </div>
-            <!-- Answer: b) Surat -->
-            <div class="question">
-                <p>9.What is the name of the famous beach located in Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Marine Drive<br>
-                <input type="radio" name="q1" value="b">b) Juhu Beach<br>
-                <input type="radio" name="q1" value="c" class="correct">c) Dumas Beach<br>
-                <input type="radio" name="q1" value="d">d) Baga Beach<br>
-            </div>
-            <!-- Answer: c) Dumas Beach -->
-            <div class="question">
-                <p>10.Which of the following is not a UNESCO World Heritage Site in Gujarat?</p>
-                <input type="radio" name="q1" value="a">a) Rani ki Vav<br>
-                <input type="radio" name="q1" value="b">b) Champaner-Pavagadh Archaeological Park<br>
-                <input type="radio" name="q1" value="c" class="correct">c) Dwarka<br>
-                <input type="radio" name="q1" value="d">d) Somnath Temple<br>
-
-            </div>
-            <!-- Answer: c) Dwarka -->
-            <div>
-                <input type="submit">
-                <input type="reset">
-            </div>
-        </form>
-    </div>
-<script src="main.js"></script>
+<script>
+/* Created and coded by Abhilash Narayan */
+/* Quiz source: w3schools.com */
+var quiz = {
+    "Guj": [
+        {
+            "id": 1,
+            "question": "What is the capital city of Gujarat?",
+            "options": [
+                {
+                    "a": "Ahmedabad",
+                    "b": "Gandhinagar",
+                    "c": "Surat",
+                    "d": "Rajkot;"
+                }
+            ],
+            "answer": "Gandhinagar",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 2,
+            "question": "What is the official language of Gujarat?",
+            "options": [
+                {
+                    "a": "Hindi",
+                    "b": "Gujarati",
+                    "c": "English",
+                    "d": "Marathi"
+                }
+            ],
+            "answer": "Gujarati",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 3,
+            "question": "Which river flows through the city of Ahmedabad?",
+            "options": [
+                {
+                    "a": "Sabarmati",
+                    "b": "Narmada",
+                    "c": "Tapti",
+                    "d": "mahi"
+                }
+            ],
+            "answer": "a) Sabarmati",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 4,
+            "question": "What is the famous kite festival celebrated in Gujarat?",
+            "options": [
+                {
+                    "a": "Holi",
+                    "b": "Navratri",
+                    "c": "Diwali",
+                    "d": "Uttarayan"
+                }
+            ],
+            "answer": "Uttarayan",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 5,
+            "question": "What is the chemical symbol for gold?",
+            "options": [
+                {
+                    "a": "Vadodara",
+                    "b": "Jamnagar",
+                    "c": "Udaipur",
+                    "d": "Bhavnagar"
+                }
+            ],
+            "answer": "Udaipur",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 6,
+            "question": "Who is the current Chief Minister of Gujarat?",
+            "options": [
+                {
+                    "a": "Narendra Modi",
+                    "b": "Amit Shah",
+                    "c": "Vijay Rupani",
+                    "d": "Anandiben Patel"
+                }
+            ],
+            "answer": "Vijay Rupani",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 7,
+            "question": "What is the name of the famous hill station located in Gujarat?",
+            "options": [
+                {
+                    "a": "Mount Abu",
+                    "b": "Kodaikanal",
+                    "c": "Darjeeling",
+                    "d": "Lonavala"
+                }
+            ],
+            "answer": "Mount Abu",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 8,
+            "question": "Which is the largest city in Gujarat by population??",
+            "options": [
+                {
+                    "a": "Ahmedabad",
+                    "b": "Surat",
+                    "c": "Vadodara",
+                    "d": "Rajkot"
+                }
+            ],
+            "answer": "Surat",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 9,
+            "question": ".What is the name of the famous beach located in Gujarat?",
+            "options": [
+                {
+                    "a": "Marine Drive",
+                    "b": "Juhu Beach",
+                    "c": "Dumas Beach",
+                    "d": "Baga Beach"
+                }
+            ],
+            "answer": "Dumas Beach",
+            "score": 0,
+            "status": ""
+        },
+        {
+            "id": 10,
+            "question": "Which of the following is not a UNESCO World Heritage Site in Gujarat?",
+            "options": [
+                {
+                    "a": "Rani ki Vav",
+                    "b": "Champaner-Pavagadh Archaeological Park",
+                    "c": "Dwarka",
+                    "d": "Somnath Temple"
+                }
+            ],
+            "answer": "Dwarka",
+            "score": 0,
+            "status": ""
+        }
+        
+    ]
+}
+var quizApp = function () {
+    this.score = 0;
+    this.qno = 1;
+    this.currentque = 0;
+    var totalque = quiz.Guj.length;
+    this.displayQuiz = function (cque) {
+        this.currentque = cque;
+        if (this.currentque < totalque) {
+            $("#tque").html(totalque);
+            $("#previous").attr("disabled", false);
+            $("#next").attr("disabled", false);
+            $("#qid").html(quiz.Guj[this.currentque].id + '.');
+            $("#question").html(quiz.Guj[this.currentque].question);
+            $("#question-options").html("");
+            for (var key in quiz.Guj[this.currentque].options[0]) {
+                if (quiz.Guj[this.currentque].options[0].hasOwnProperty(key)) {
+                    $("#question-options").append(
+                        "<div class='form-check option-block'>" +
+                        "<label class='form-check-label'>" +
+                        "<input type='radio' class='form-check-input' name='option' id='q" + key + "' value='" + quiz.Guj[this.currentque].options[0][key] + "'><span id='optionval'>" +
+                        quiz.Guj[this.currentque].options[0][key] +
+                        "</span></label>"
+                    );
+                }
+            }
+        }
+        if (this.currentque <= 0) {
+            $("#previous").attr("disabled", true);
+        }
+        if (this.currentque >= totalque) {
+            $('#next').attr('disabled', true);
+            for (var i = 0; i < totalque; i++) {
+                this.score = this.score + quiz.Guj[i].score;
+            }
+            return this.showResult(this.score);
+        }
+    }
+    this.showResult = function (scr) {
+        $("#result").addClass('result');
+        $("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr + '/' + totalque + "</h1>");
+        for (var j = 0; j < totalque; j++) {
+            var res;
+            if (quiz.Guj[j].score == 0) {
+                res = '<span class="wrong">' + quiz.Guj[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
+            } else {
+                res = '<span class="correct">' + quiz.Guj[j].score + '</span><i class="fa fa-check c-correct"></i>';
+            }
+            $("#result").append(
+                '<div class="result-question"><span>Q ' + quiz.Guj[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
+                '<div><b>Correct answer:</b> &nbsp;' + quiz.Guj[j].answer + '</div>' +
+                '<div class="last-row"><b>Score:</b> &nbsp;' + res +
+                '</div>'
+            );
+        }
+    }
+    this.checkAnswer = function (option) {
+        var answer = quiz.Guj[this.currentque].answer;
+        // option = option.replace(/</g, "&lt;") //for <
+        // option = option.replace(/>/g, "&gt;") //for >
+        // option = option.replace(/"/g, "&quot;")
+        if (option == quiz.Guj[this.currentque].answer) {
+            if (quiz.Guj[this.currentque].score == "") {
+                quiz.Guj[this.currentque].score = 1;
+                quiz.Guj[this.currentque].status = "correct";
+            }
+        } else {
+            quiz.Guj[this.currentque].status = "wrong";
+        }
+    }
+    this.changeQuestion = function (cque) {
+        this.currentque = this.currentque + cque;
+        this.displayQuiz(this.currentque);
+    }
+}
+var jsq = new quizApp();
+var selectedopt;
+$(document).ready(function () {
+    jsq.displayQuiz(0);
+    $('#question-options').on('change', 'input[type=radio][name=option]', function (e) {
+        //var radio = $(this).find('input:radio');
+        $(this).prop("checked", true);
+        selectedopt = $(this).val();
+    });
+});
+$('#next').click(function (e) {
+    e.preventDefault();
+    if (selectedopt) {
+        jsq.checkAnswer(selectedopt);
+    }
+    jsq.changeQuestion(1);
+});
+$('#previous').click(function (e) {
+    e.preventDefault();
+    if (selectedopt) {
+        jsq.checkAnswer(selectedopt);
+    }
+    jsq.changeQuestion(-1);
+});</script>
 </body>
-
 </html>
