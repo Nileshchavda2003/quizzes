@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+</head>
+
+<body>
+    <form action="" align="center">
+        <p>Enter a Question</p><input type="text" id="Quitions">
+        <p for="opt">option a:</p><input type="text" name="opt" id="opt1">
+        <p for="opt">option b:</p><input type="text" name="opt" id="opt2">
+        <p for="opt">option c:</p><input type="text" name="opt" id="opt3">
+        <p for="opt">option d:</p><input type="text" name="opt" id="opt4">
+        <p>correct answer:</p><input type="text" id="ans">
+        <input type="submit" id="submit">
+
+    </form>
+    <script>
+        submit.addEventListener("click", function () {
+            let question = document.getElementById("Quitions").value;
+            let opt1 = document.getElementById("opt1").value;
+            let opt2 = document.getElementById("opt2").value;
+            let opt3 = document.getElementById("opt3").value;
+            let opt4 = document.getElementById("opt4").value;
+            let answer = document.getElementById("ans").value;
+
+
+            let Qarr = [question, opt1, opt2, opt3, opt4, answer];
+
+            //.................... local storage push...............
+            // var data = localStorage.getItem('Questions');
+
+            // data = data ? JSON.parse(data) : [];
+
+            // data.push(keyAndValue);
+            // localStorage.setItem('Questions', JSON.stringify(Qarr));
+
+            data = data ? JSON.parse('Questions') : [];
+            localStorage.setItem('Questions', JSON.stringify(Qarr));
+
+        });
+        // localStorage.setItem('Questions', JSON.stringify(Qarr));
+    //     document.write(question);
+
+    //     storeInLocalStorage(item, keyAndvalue) {
+    // var data = localStorage.getItem('Questions');
+
+    // data = data ? JSON.parse(data) : [];
+
+    // data.push(keyAndValue);
+    // localStorage.setItem('Questions', JSON.stringify(Qarr));
+
+    // localStorage.setItem(item, JSON.stringify(data));
+// }
+
+
+
+    </script>
+</body>
+
+</html>
