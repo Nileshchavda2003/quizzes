@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 <style>
+    a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
     .content {
     margin-top: 54px;
     }
@@ -53,11 +59,14 @@
     .c-wrong {
     margin-left: 20px;
     /* background-color: #ff0000; */
+        border: 2px solid red;
     color: #ff0000;
     }
     .c-correct {
     margin-left: 20px;
     /* background-color: green; */
+    border: 2px solid green;
+
     color: green;
     }
     .last-row {
@@ -92,6 +101,13 @@
 <button name="previous" id="previous" class="btn btn-success">Previous</button>
 &nbsp;
 <button name="next" id="next" class="btn btn-success">Next</button>
+<br><br>
+<button name="next"  class="btn btn-success"><a style="text-decoration: none" href="create.html">Create Quiz</a></button>
+<br><br>
+<button name="next"  class="btn btn-success"><a style="text-decoration: none" href="index.html">Main Menu</a></button>
+
+
+
 </form>
 </div>
 </div> <!-- End of col-sm-12 -->
@@ -104,167 +120,7 @@
 
 <script>
 
-// var quiz = {
-//     "Gen": [
-//         {
-//             "id": 1,
-//             "question": "What is the capital of France?",
-//             "options": [
-//                 {
-//                     "a": "Madrid",
-//                     "b": "Paris",
-//                     "c": "Berlin",
-//                     "d": "London;"
-//                 }
-//             ],
-//             "answer": "Paris",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 2,
-//             "question": "Who painted the Mona Lisa?",
-//             "options": [
-//                 {
-//                     "a": "Vincent van Gogh",
-//                     "b": "Leonardo da Vinci",
-//                     "c": "Pablo Picasso",
-//                     "d": "Michelangelo"
-//                 }
-//             ],
-//             "answer": "Leonardo da Vinci",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 3,
-//             "question": "What is the tallest mountain in the world?",
-//             "options": [
-//                 {
-//                     "a": "Mount Everest",
-//                     "b": "Mount Kilimanjaro",
-//                     "c": "Mount Fuji",var quiz = {
-//     "Gen": [
-//         {
-//             "id": 1,
-//             "question": "What is the capital of France?",
-//             "options": [
-//                 {
-//                     "a": "Madrid",
-//                     "b": "Paris",
-//                     "c": "Berlin",
-//                     "d": "London;"
-//                 }
-//             ],
-//             "answer": "Paris",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 2,
-//             "question": "Who painted the Mona Lisa?",
-//             "options": [
-//                 {
-//                     "a": "Vincent van Gogh",
-//                     "b": "Leonardo da Vinci",
-//                     "c": "Pablo Picasso",
-//                     "d": "Michelangelo"
-//                 }
-//             ],
-//             "answer": "Leonardo da Vinci",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 3,
-//             "question": "What is the tallest mountain in the world?",
-//             "options": [
-//                 {
-//                     "a": "Mount Everest",
-//                     "b": "Mount Kilimanjaro",
-//                     "c": "Mount Fuji",
-//                     "d": "Mount Rushmore"
-//                 }
-//             ],
-//             "answer": "Mount Everest",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 4,
-//             "question": "What is the currency of Japan??",
-//             "options": [
-//                 {
-//                     "a": "Yuan",
-//                     "b": "Yen",
-//                     "c": "Euro",
-//                     "d": "Dollar"
-//                 }
-//             ],
-//             "answer": "Euro",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 5,
-//             "question": "Who wrote the Harry Potter series?",
-//             "options": [
-//                 {
-//                     "a": "Stephen King",
-               
-//      "b": "J.R.R. Tolkien",
-//                     "c": "J.K. Rowling",
-//                     "d": "George R.R. Martin"
-//                 }
-//             ],
-//             "answer": "J.K. Rowling",
-//             "score": 0,
-//             "status": ""
-//         }
-        
-//     ]
-// }
-//                     "d": "Mount Rushmore"
-//                 }
-//             ],
-//             "answer": "Mount Everest",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 4,
-//             "question": "What is the currency of Japan??",
-//             "options": [
-//                 {
-//                     "a": "Yuan",
-//                     "b": "Yen",
-//                     "c": "Euro",
-//                     "d": "Dollar"
-//                 }
-//             ],
-//             "answer": "Euro",
-//             "score": 0,
-//             "status": ""
-//         },
-//         {
-//             "id": 5,
-//             "question": "Who wrote the Harry Potter series?",
-//             "options": [
-//                 {
-//                     "a": "Stephen King",
-               
-//      "b": "J.R.R. Tolkien",
-//                     "c": "J.K. Rowling",
-//                     "d": "George R.R. Martin"
-//                 }
-//             ],
-//             "answer": "J.K. Rowling",
-//             "score": 0,
-//             "status": ""
-//         }
-        
-//     ]
-// }
+
 const quiz = JSON.parse(localStorage.getItem('Questions'))
 console.log("quiz :: ", typeof quiz, quiz);
 var quizApp = function () {
@@ -311,13 +167,18 @@ var quizApp = function () {
         $("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr + '/' + totalque + "</h1>");
         for (var j = 0; j < totalque; j++) {
             var res;
-            if (quiz[j].score == 0) {
-                res = '<span class="wrong">' + quiz[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
-            } else {
-                res = '<span class="correct">' + quiz[j].score + '</span><i class="fa fa-check c-correct"></i>';
+            if (quiz[j].score == 0) {   //<i class="fa fa-remove c-wrong"></i>
+                res = '<span class="wrong">' + quiz[j].score + `</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x c-wrong" viewBox="0 0 16 16">
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>`
+            } else {                    //'</span><i class="fa fa-check c-correct"></i>'
+                res = '<span class="correct">' + quiz[j].score + `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check c-correct" viewBox="0 0 16 16">
+  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+</svg>`;
             }
             $("#result").append(
-                '<div class="result-question"><span>Q ' + quiz[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
+                '<div class="result-question"><span>Q ' +[j+1]+"." + '</span> &nbsp;' + quiz[j].question + '</div>' +
                 '<div><b>Correct answer:</b> &nbsp;' + quiz[j].answer + '</div>' +
                 '<div class="last-row"><b>Score:</b> &nbsp;' + res +
                 '</div>'
