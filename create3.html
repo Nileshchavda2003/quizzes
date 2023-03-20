@@ -18,7 +18,7 @@
     top: 0;
     width: 100%;
     z-index: 9999;
-    background-color: #dfdd59;
+    background-color: #d6c634;
     }
     .left-title {
     width: 80px;
@@ -143,6 +143,45 @@
 //                 {
 //                     "a": "Mount Everest",
 //                     "b": "Mount Kilimanjaro",
+//                     "c": "Mount Fuji",var quiz = {
+//     "Gen": [
+//         {
+//             "id": 1,
+//             "question": "What is the capital of France?",
+//             "options": [
+//                 {
+//                     "a": "Madrid",
+//                     "b": "Paris",
+//                     "c": "Berlin",
+//                     "d": "London;"
+//                 }
+//             ],
+//             "answer": "Paris",
+//             "score": 0,
+//             "status": ""
+//         },
+//         {
+//             "id": 2,
+//             "question": "Who painted the Mona Lisa?",
+//             "options": [
+//                 {
+//                     "a": "Vincent van Gogh",
+//                     "b": "Leonardo da Vinci",
+//                     "c": "Pablo Picasso",
+//                     "d": "Michelangelo"
+//                 }
+//             ],
+//             "answer": "Leonardo da Vinci",
+//             "score": 0,
+//             "status": ""
+//         },
+//         {
+//             "id": 3,
+//             "question": "What is the tallest mountain in the world?",
+//             "options": [
+//                 {
+//                     "a": "Mount Everest",
+//                     "b": "Mount Kilimanjaro",
 //                     "c": "Mount Fuji",
 //                     "d": "Mount Rushmore"
 //                 }
@@ -185,22 +224,49 @@
         
 //     ]
 // }
-
-var quiz = localStorage.getItem("Questions");
-let question = quiz[currentque][0];
-let op1 =quiz[currentque][1];
-let op2 =quiz[currentque][2];
-let op3 =quiz[currentque][3];
-let op4 =quiz[currentque][4];
-let option = {op1 , op2 ,op3 ,op4  };
-
-const quiz = localStorage.getItem('Questions');
-
-const languages = JSON.parse(quiz);
-
-console.log(languages);
-
-
+//                     "d": "Mount Rushmore"
+//                 }
+//             ],
+//             "answer": "Mount Everest",
+//             "score": 0,
+//             "status": ""
+//         },
+//         {
+//             "id": 4,
+//             "question": "What is the currency of Japan??",
+//             "options": [
+//                 {
+//                     "a": "Yuan",
+//                     "b": "Yen",
+//                     "c": "Euro",
+//                     "d": "Dollar"
+//                 }
+//             ],
+//             "answer": "Euro",
+//             "score": 0,
+//             "status": ""
+//         },
+//         {
+//             "id": 5,
+//             "question": "Who wrote the Harry Potter series?",
+//             "options": [
+//                 {
+//                     "a": "Stephen King",
+               
+//      "b": "J.R.R. Tolkien",
+//                     "c": "J.K. Rowling",
+//                     "d": "George R.R. Martin"
+//                 }
+//             ],
+//             "answer": "J.K. Rowling",
+//             "score": 0,
+//             "status": ""
+//         }
+        
+//     ]
+// }
+const quiz = JSON.parse(localStorage.getItem('Questions'))
+console.log("quiz :: ", typeof quiz, quiz);
 var quizApp = function () {
     this.score = 0;
     this.qno = 1;
@@ -212,15 +278,17 @@ var quizApp = function () {
             $("#tque").html(totalque);
             $("#previous").attr("disabled", false);
             $("#next").attr("disabled", false);
-            $("#qid").html(quiz[this.currentque]+qno + '.');
-            $("#question").html(quiz[this.currentque][0]);
+            $("#qid").html(cque+1+".");
+           
+            // $("#qid").html(quiz[this.currentque].id + '.');
+            $("#question").html(quiz[this.currentque].question);
             $("#question-options").html("");
-            for (var key in quiz[this.currentque]+option) {
-                if (quiz[this.currentque].option.hasOwnProperty(key)) {
+            for (var key in quiz[this.currentque].options[0]) {
+                if (quiz[this.currentque].options[0].hasOwnProperty(key)) {
                     $("#question-options").append(
                         "<div class='form-check option-block'>" +
                         "<label class='form-check-label'>" +
-                        "<input type='radio' class='form-check-input' name='option' id='q" + key + "' value='" + quiz[this.currentque]+option[0][key] + "'><span id='optionval'>" +
+                        "<input type='radio' class='form-check-input' name='option' id='q" + key + "' value='" + quiz[this.currentque].options[0][key] + "'><span id='optionval'>" +
                         quiz[this.currentque].options[0][key] +
                         "</span></label>"
                     );
@@ -233,7 +301,7 @@ var quizApp = function () {
         if (this.currentque >= totalque) {
             $('#next').attr('disabled', true);
             for (var i = 0; i < totalque; i++) {
-                this.score = this.score + quiz[i][6];
+                this.score = this.score + quiz[i].score;
             }
             return this.showResult(this.score);
         }
@@ -243,31 +311,31 @@ var quizApp = function () {
         $("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr + '/' + totalque + "</h1>");
         for (var j = 0; j < totalque; j++) {
             var res;
-            if (quiz[j][6] == 0) {
-                res = '<span class="wrong">' + quiz[j][6] + '</span><i class="fa fa-remove c-wrong"></i>';
+            if (quiz[j].score == 0) {
+                res = '<span class="wrong">' + quiz[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
             } else {
-                res = '<span class="correct">' + quiz[j][6] + '</span><i class="fa fa-check c-correct"></i>';
+                res = '<span class="correct">' + quiz[j].score + '</span><i class="fa fa-check c-correct"></i>';
             }
             $("#result").append(
-                '<div class="result-question"><span>Q ' +j+ '</span> &nbsp;' + quiz.JS[j][0] + '</div>' +
-                '<div><b>Correct answer:</b> &nbsp;' + quiz[j][5] + '</div>' +
+                '<div class="result-question"><span>Q ' + quiz[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
+                '<div><b>Correct answer:</b> &nbsp;' + quiz[j].answer + '</div>' +
                 '<div class="last-row"><b>Score:</b> &nbsp;' + res +
                 '</div>'
             );
         }
     }
     this.checkAnswer = function (option) {
-        var answer = quiz[this.currentque][5];
+        var answer = quiz[this.currentque].answer;
         // option = option.replace(/</g, "&lt;") //for <
         // option = option.replace(/>/g, "&gt;") //for >
         // option = option.replace(/"/g, "&quot;")
-        if (option == quiz[this.currentque][5]) {
-            if (quiz[this.currentque][6] == "") {
-                quiz[this.currentque][6] = 1;
-                quiz[this.currentque][7] = "correct";
+        if (option == quiz[this.currentque].answer) {
+            if (quiz[this.currentque].score == "") {
+                quiz[this.currentque].score = 1;
+                quiz[this.currentque].status = "correct";
             }
         } else {
-            quiz[this.currentque][7] = "wrong";
+            quiz[this.currentque].status = "wrong";
         }
     }
     this.changeQuestion = function (cque) {
