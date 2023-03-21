@@ -102,7 +102,11 @@
 &nbsp;
 <button name="next" id="next" class="btn btn-success">Next</button>
 <br><br>
-<button name="next"  class="btn btn-success"><a style="text-decoration: none" href="create.html">Create Quiz</a></button>
+<button name="next"  class="btn btn-success" >
+    <a style="text-decoration: none" href="create.html">
+        Create Quiz
+    </a>
+    </button>
 <br><br>
 <button name="next"  class="btn btn-success"><a style="text-decoration: none" href="index.html">Main Menu</a></button>
 
@@ -132,9 +136,9 @@ var quizApp = function () {
         this.currentque = cque;
         if (this.currentque < totalque) {
             $("#tque").html(totalque);
-            $("#previous").attr("disabled", false);
-            $("#next").attr("disabled", false);
-            $("#qid").html(cque+1+".");
+            $("#previous").attr("disabled", false);     //attr Set the attribute and value:
+            $("#next").attr("disabled", false);         //attr Set the attribute and value:
+            $("#qid").html(cque+1+".");         //Q. no start from 1
            
             // $("#qid").html(quiz[this.currentque].id + '.');
             $("#question").html(quiz[this.currentque].question);

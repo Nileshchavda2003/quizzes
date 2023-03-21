@@ -194,8 +194,8 @@ var quizApp = function () {
         this.currentque = cque;
         if (this.currentque < totalque) {
             $("#tque").html(totalque);
-            $("#previous").attr("disabled", false);
-            $("#next").attr("disabled", false);
+            $("#previous").attr("disabled", false);     //attr Set the attribute and value:
+            $("#next").attr("disabled", false);         //attr Set the attribute and value:
             $("#qid").html(quiz.Gen[this.currentque].id + '.');
             $("#question").html(quiz.Gen[this.currentque].question);
             $("#question-options").html("");

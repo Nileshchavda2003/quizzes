@@ -6,8 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Quiz</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
   <style>
-    body {
+      body {
       background-image: url("images/solar-system-animation.svg");
       background-size: cover;
 
@@ -15,46 +17,123 @@
     }
 
     form {
-      background-color: rgba(255, 248, 220, 0.792);
-      margin: 10px 300px 0px 300px;
-      padding: 10px 0px 30px 0px;
-      border: 2px solid black;
-      border-radius: 50px;
+      background-color:rgba(255, 255, 255, 0.432);
+      /* margin: 10px 300px 0px 300px;
+      padding: 10px 0px 30px 0px; */
+      border: 2px solid white;
+      border-radius: 10px;
+      margin: 10px;
+      padding: 30px;
 
     }
+    
+    input{
+      /* margin-top: 5%; */
+      margin-bottom: 5%;
+      border: 1px solid white;
+    }
+    button{
+      background-color: #f31d64;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+    #submit{
+      background-color: #ff33bb;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+    #submit:hover{
+      background-color: rgb(220, 20, 20);
+      box-shadow: 0 0 15px crimson,
+    0 0 25px crimson,
+    0 0 50px crimson,
+    0 0 100px crimson;
+  
+    }
     a {
-      color: black;
+
       padding: 12px 16px;
       text-decoration: none;
-      display: block;
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;}
+      button:hover,:focus{background-color: rgb(184, 0, 0); color: white;}
+      input{
+      height: 30px;
+      background-color: #04aa6d00;
+      border-radius: 5px;
+      border: 2px solid black;
+      box-shadow: 0 0 20px #431ccf,
+           0 0 20px rgb(14, 92, 238),
+           0 0 30px rgb(14, 193, 238);
+      -webkit-box-reflect: below 1px linear-gradient(transparent,#0004);
+
     }
+    input::placeholder{
+      letter-spacing: 5px;
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    }
+    a:link{
+      text-decoration: none;
+    }
+  #play{
+    background-color: rgb(119, 221, 61);
+  }
+  #clear{
+    background-color: rgb(51, 51, 212);
+
+  }
+  #play:hover{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8),
+    0 0 25px rgba(255, 0, 0, 0.8),
+    0 0 50px rgba(255, 0, 0, 0.8),
+    0 0 100px rgba(255, 0, 0, 0.8);
+
+  }
+   #clear:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(0, 0, 0, 0.8),
+    0 0 50px rgba(0, 0, 0, 0.8),
+    0 0 100px rgba(0, 0, 0, 0.8);
+
+  }
   </style>
 </head>
 
 <body>
   <div class="container">
 
-    <div class="row"><div class="col-sm-3"></div>
-    <div class="col-sm-6">
-      <form action="" align="center">
-        <p>Enter a Question</p>
-        <input type="text" id="Quitions" required />
-        <p for="opt">option a:</p>
-        <input type="text" name="option1" required id="opt1" />
-        <p for="opt">option b:</p>
-        <input type="text" name="option2" required id="opt2" />
-        <p for="opt">option c:</p>
-        <input type="text" name="option3" required id="opt3" />
-        <p for="opt">option d:</p>
-        <input type="text" name="option4" required id="opt4" /><br />
-        <p>correct answer:</p>
-        <input type="text" id="ans" required/> <br /><br />
-        <input type="submit" id="submit" /> <br><br>
-        <button id="play"><a href="create3.html">Play Quiz</a> </button>
-        <br><br>
+    <div class="row"><div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form action="" align="center" >
+        <input type="text" id="Quitions" required placeholder="Enter a Question"/>
+        <input type="text" name="option1" required id="opt1" placeholder="option a:"/>
+        <input type="text" name="option2" required id="opt2" placeholder="option b:"/>
+        <input type="text" name="option3" required id="opt3" placeholder="option c:"/>
+        <input type="text" name="option4" required id="opt4" placeholder="option d:"/><br />
+        <input type="text" id="ans" required placeholder="Correct Answer"/> <br /><br />
+        <button type="submit" id="submit" > Submit Q</button><br>
+        <button id="play">
+          <a href="create3.html">Play Quiz</a> 
+        </button>
+        <br>
         <button id="clear">Delete Quiz</button>
       </form></div>
-      <div class="col-sm-3"></div>
+      <div class="col-md-4"></div>
     </div>
   </div>
   <script>
